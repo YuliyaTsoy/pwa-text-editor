@@ -14,19 +14,19 @@ const initdb = async () =>
 
 // Adds logic to a method that accepts some content and adds it to the database
 export const putDb = async (content) => {
-  console.log ('PUT request sent to the jate database');
+  console.log ('PUT request sent to update jate database');
 
  // Create a connection to the database database and version we want to use.
  const jateDb = await openDB('jate', 1);
 
 // Create a new transaction and specify the database and data privileges.
-const tx = jateDb.transaction(['jate'], 'readwrite');
+const tx = jateDb.transaction('jate', 'readwrite');
 
 // Open up the desired object store.
 const store = tx.objectStore('jate');
 
- // Use .add method to update existing content
- const request = store.add({ content: content});
+ // Use .put method to update existing content
+ const request = store.put({ id:1,  value: content });//  
 
   // Get confirmation of the request.
   const result = await request;
@@ -35,13 +35,13 @@ const store = tx.objectStore('jate');
 
 //Adds logic for a method that gets all the content from the database
 export const getDb = async () => {
-  console.error('GET request sent to the jate')
+  console.error('GET request sent to the jate database')
 
   // Create a connection to the database database and version we want to use.
   const jateDb = await openDB('jate', 1);
 
   // Create a new transaction and specify the database and data privileges.
-  const tx = jateDb.transaction(['jate'], 'readonly');
+  const tx = jateDb.transaction('jate', 'readonly');
 
   // Open up the desired object store.
   const store = tx.objectStore('jate');
