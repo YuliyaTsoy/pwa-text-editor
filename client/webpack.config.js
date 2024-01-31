@@ -18,6 +18,7 @@ module.exports = () => {
       path: path.resolve(__dirname, 'dist'),
     },
     plugins: [
+      // plugin to generate HTML and inject our bundles
       new HtmlWebpackPlugin({
         template: './index.html',
         title: 'Text Editor'
@@ -47,6 +48,7 @@ module.exports = () => {
     ],
 
     module: {
+      // Adds CSS loaders and babel to webpack.
       rules: [
         {
           test: /\.css$/i,
