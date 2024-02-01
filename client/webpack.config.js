@@ -11,7 +11,10 @@ module.exports = () => {
     mode: 'development',
     entry: {
       main: './src/js/index.js',
-      install: './src/js/install.js'
+      install: './src/js/install.js',
+      database: './src/js/database.js',
+      editor: './src/js/editor.js',
+      header: './src/js/header.js',
     },
     output: {
       filename: '[name].bundle.js',
@@ -30,8 +33,8 @@ module.exports = () => {
       new WebpackPwaManifest({
         fingerprints: false,
         inject: true,
-        name: 'Text Editor',
-        short_name: 'Editor',
+        name: 'Just Another Text Editor',
+        short_name: 'JATE',
         description: 'Just Another Text Editor!',
         background_color: '#225ca3',
         theme_color: '#225ca3',
@@ -48,7 +51,7 @@ module.exports = () => {
     ],
 
     module: {
-      // Adds CSS loaders and babel to webpack.
+      // Adds CSS loaders to webpack.
       rules: [
         {
           test: /\.css$/i,
@@ -58,6 +61,7 @@ module.exports = () => {
           test: /\.m?js$/,
           exclude: /node_modules/,
           use: {
+            // babel-loader to use ES6
             loader: 'babel-loader',
             options: {
               presets: ['@babel/preset-env'],
