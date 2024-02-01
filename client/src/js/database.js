@@ -35,7 +35,7 @@ const store = tx.objectStore('jate');
 
 //Adds logic for a method that gets all the content from the database
 export const getDb = async () => {
-  console.error('GET request sent to the jate database')
+  console.log('GET request sent to the jate database');
 
   // Create a connection to the database database and version we want to use.
   const jateDb = await openDB('jate', 1);
